@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Редагувати профіль</title>
+</head>
+<body>
+
+<h1>Редагування профілю</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Email:</label><br>
+    <input type="email" name="email" value="{{ user.email }}"><br><br>
+
+    <label>Стать:</label><br>
+    <input type="text" name="gender" value="{{ profile.gender }}"><br><br>
+
+    <label>Телефон:</label><br>
+    <input type="text" name="phone" value="{{ profile.phone }}"><br><br>
+
+    <label>Вік:</label><br>
+    <input type="number" name="age" value="{{ profile.age }}"><br><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+
+<br>
+<a href="{% url 'profile' %}">Назад до профілю</a>
+
+</body>
+</html>

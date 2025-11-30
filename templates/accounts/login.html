@@ -1,11 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Увійти в профіль</h2>
-<form method="post">
-    {% csrf_token %}
-    {{form.as_div}}
-    <button type="submit" class="btn btn-primary">Увійти</button>
-    <a href="{% url 'register' %}" class="btn btn-link">Зареєструватися</a>
-</form>
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow p-4" style="width: 420px; border-radius: 12px;">
+
+        <h2 class="text-center mb-4">Увійти в профіль</h2>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            <div class="mb-3">
+                {{ form.as_div }}
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Увійти
+            </button>
+
+            <div class="text-center mt-3">
+                <a href="{% url 'register' %}" class="text-decoration-none">
+                    Немає акаунта? Зареєструватися
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>
 {% endblock %}

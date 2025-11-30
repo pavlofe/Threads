@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Мій профіль</title>
+</head>
+<body>
+
+<h1>Мій профіль</h1>
+
+<p><strong>Ім'я користувача:</strong> {{ request.user.username }}</p>
+<p><strong>Email:</strong> {{ request.user.email }}</p>
+<p><strong>Стать:</strong> {{ profile.gender }}</p>
+<p><strong>Телефон:</strong> {{ profile.phone }}</p>
+<p><strong>Вік:</strong> {{ profile.age }}</p>
+
+<br>
+<a href="{% url 'edit_profile' %}">Редагувати профіль</a>
+
+</body>
+</html>
