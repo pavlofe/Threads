@@ -36,6 +36,7 @@ def register(request):
 
         gender = request.POST.get('gender')
         phone = request.POST.get('phone')
+        age = request.POST.get('age')
 
         user = User.objects.create(
             username=username,
