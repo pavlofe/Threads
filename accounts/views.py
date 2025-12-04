@@ -8,6 +8,8 @@ from django.contrib.auth import login
 from django.contrib.auth.hashers import make_password
 from .models import Profile
 from accounts.forms import LoginForm, RegisterForm
+from django.shortcuts import render
+
 
 
 class CustomLoginView(LoginView):
@@ -81,3 +83,6 @@ def edit_profile(request):
         'profile': profile,
         'user': request.user
     })
+
+def home(request):
+    return render(request, 'home.html')

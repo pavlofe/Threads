@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "alerts.html" %}
+{% include "menu.html" %}
+
+<div class="container mt-5 text-center">
+    <h1>Вітаємо!</h1>
+
+    {% if user.is_authenticated %}
+        <p>Ви увійшли як <strong>{{ user.username }}</strong></p>
+        <a href="{% url 'profile' %}" class="btn btn-primary">Мій профіль</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary">Увійти</a>
+        <a href="{% url 'register' %}" class="btn btn-secondary">Зареєструватися</a>
+    {% endif %}
+</div>
+
+{% include "footer.html" %}
+
+{% endblock %}
