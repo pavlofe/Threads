@@ -3,19 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <title>Мій профіль</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .profile-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-item:last-child {
+            border-bottom: none;
+        }
+
+        .profile-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .profile-value {
+            color: #222;
+        }
+
+        .profile-actions {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .edit-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        .edit-btn:hover {
+            background-color: #43a047;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Мій профіль</h1>
+<div class="profile-container">
+    <h1>Мій профіль</h1>
 
-<p><strong>Ім'я користувача:</strong> {{ request.user.username }}</p>
-<p><strong>Email:</strong> {{ request.user.email }}</p>
-<p><strong>Стать:</strong> {{ profile.gender }}</p>
-<p><strong>Телефон:</strong> {{ profile.phone }}</p>
-<p><strong>Вік:</strong> {{ profile.age }}</p>
+    <div class="profile-item">
+        <span class="profile-label">Ім'я користувача</span>
+        <span class="profile-value">{{ request.user.username }}</span>
+    </div>
 
-<br>
-<a href="{% url 'edit_profile' %}">Редагувати профіль</a>
+    <div class="profile-item">
+        <span class="profile-label">Email</span>
+        <span class="profile-value">{{ request.user.email }}</span>
+    </div>
+
+    <div class="profile-item">
+        <span class="profile-label">Стать</span>
+        <span class="profile-value">{{ profile.gender }}</span>
+    </div>
+
+    <div class="profile-item">
+        <span class="profile-label">Телефон</span>
+        <span class="profile-value">{{ profile.phone }}</span>
+    </div>
+
+    <div class="profile-item">
+        <span class="profile-label">Вік</span>
+        <span class="profile-value">{{ profile.age }}</span>
+    </div>
+
+    <div class="profile-actions">
+        <a href="{% url 'edit_profile' %}" class="edit-btn">Редагувати профіль</a>
+    </div>
+</div>
 
 </body>
 </html>
+

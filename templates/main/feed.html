@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="feed-container">
+
+    {% for post in posts %}
+        <div class="post-card">
+            <div class="post-header">
+                <strong>{{ post.author.username }}</strong>
+                <span class="post-date">{{ post.created_at|date:"d.m.Y H:i" }}</span>
+            </div>
+
+            <div class="post-body">
+                <p>{{ post.content }}</p>
+
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="Post image" class="post-image">
+                {% endif %}
+            </div>
+
+            <div class="post-footer">
+                <button class="like-btn">Like</button>
+                <button class="comment-btn">Comment</button>
+            </div>
+        </div>
+    {% empty %}
+        <p class="no-posts">Постів поки немає.</p>
+    {% endfor %}
+
+</div>
+{% endblock %}
