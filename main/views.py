@@ -9,8 +9,13 @@ from .models import Post, Comment, Like, Notification
 # --------------------------
 def feed(request):
     posts = Post.objects.all().order_by('-created_at')
-    return render(request, 'main/feed.html', {'posts': posts})
-
+    unread_count = 0
+    if request.user.is_authenticated:
+        unread_count = request.user.notifications.filter(is_read=False).count()
+    return render(request, 'main/feed.html', {
+        'posts': posts,
+        'unread_notifications': unread_count
+    })
 
 # --------------------------
 #  ДЕТАЛЬНИЙ ПОСТ
@@ -143,3 +148,4 @@ def mark_notification_read(request, notif_id):
     note.is_read = True
     note.save()
     return redirect('notifications')
+

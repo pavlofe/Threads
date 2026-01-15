@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Сповіщення{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <h2 class="mb-4">Сповіщення</h2>
+
+    {% if notifications %}
+        <ul class="list-group">
+            {% for notif in notifications %}
+                <li class="list-group-item d-flex justify-content-between align-items-start
+                    {% if not notif.is_read %} list-group-item-warning {% endif %}">
+                    
+                    <div class="ms-2 me-auto">
+                        <div>
+                            {% if notif.notification_type == 'like' %}
+                                <i class="bi bi-heart-fill text-danger"></i>
+                                <strong>{{ notif.sender.username }}</strong> лайкнув ваш пост
+                                {% if notif.post %}
+                                    "<a href='{% url "post_detail" notif.post.pk %}'>{{ notif.post.title }}</a>"
+                                {% endif %}
+                            {% elif notif.notification_type == 'comment' %}
+                                <i class="bi bi-chat-fill text-primary"></i>
+                                <strong>{{ notif.sender.username }}</strong> прокоментував ваш пост
+                                {% if notif.post %}
+                                    "<a href='{% url "post_detail" notif.post.pk %}'>{{ notif.post.title }}</a>"
+                                {% endif %}
+                            {% elif notif.notification_type == 'follow' %}
+                                <i class="bi bi-person-plus-fill text-success"></i>
+                                <strong>{{ notif.sender.username }}</strong> підписався на вас
+                            {% endif %}
+                        </div>
+                        <small class="text-muted">{{ notif.created_at|date:"d.m.Y H:i" }}</small>
+                    </div>
+
+                    {% if not notif.is_read %}
+                        <a href="{% url 'mark_notification_read' notif.id %}" class="btn btn-sm btn-outline-secondary">
+                            Позначити як прочитане
+                        </a>
+                    {% endif %}
+
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">Немає сповіщень.</p>
+    {% endif %}
+
+</div>
+{% endblock %}
