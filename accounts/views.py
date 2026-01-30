@@ -9,7 +9,8 @@ from django.contrib.auth.hashers import make_password
 from .models import Profile
 from accounts.forms import LoginForm, RegisterForm
 from django.shortcuts import render
-
+from django.contrib.auth import logout
+from django.views import View
 
 
 class CustomLoginView(LoginView):
@@ -18,8 +19,13 @@ class CustomLoginView(LoginView):
     form_class = LoginForm
 
 
-class CustomLogoutView(LogoutView):
+class CustomLogoutView(View):
     next_page = reverse_lazy('login')
+    def get(self, request, *args, **kwargs):
+            logout(request) 
+            return redirect('/login')
+
+
 
 
 class RegisterView(CreateView):

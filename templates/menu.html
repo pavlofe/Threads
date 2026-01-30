@@ -50,7 +50,7 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <span class="navbar-text me-2">
-                            <i class="bi bi-person-circle"></i> {{ user.username }}
+                           <a href="{% url 'profile' %}"> <i class="bi bi-person-circle"></i> {{ user.username }}</a>
                         </span>
                     </li>
 

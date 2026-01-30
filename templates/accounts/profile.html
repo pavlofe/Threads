@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>Мій профіль</title>
+{% extends 'base.html' %}
+
+{% block content %}
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,8 +62,8 @@
             background-color: #43a047;
         }
     </style>
-</head>
-<body>
+
+
 
 <div class="profile-container">
     <h1>Мій профіль</h1>
@@ -100,6 +98,5 @@
     </div>
 </div>
 
-</body>
-</html>
+{% endblock %}
 

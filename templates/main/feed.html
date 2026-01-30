@@ -5,23 +5,23 @@
 <div class="feed-container">
 
     {% for post in posts %}
-        <div class="post-card">
-            <div class="post-header">
-                <strong>{{ post.author.username }}</strong>
+        <div class="card mb-3" style="max-width: 600px">
+            <div class="card-header">
+                <a href=""> <strong>{{ post.author.username }}</strong></a>
                 <span class="post-date">{{ post.created_at|date:"d.m.Y H:i" }}</span>
             </div>
 
-            <div class="post-body">
+            <div class="card-body">
                 <p>{{ post.content }}</p>
 
                 {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="Post image" class="post-image">
+                    <img src="{{ post.image.url }}" alt="Post image" class="img-fluid">
                 {% endif %}
             </div>
 
-            <div class="post-footer">
-                <button class="like-btn">Like</button>
-                <button class="comment-btn">Comment</button>
+            <div class="card-footer">
+               <button class="btn btn-dark"><i class="bi bi-heart-fill"></i></button>
+                <a href="{% url 'post_detail' post.id %}" class="btn btn-outline-dark"><i class="bi bi-chat-fill"></i> Comment</a>
             </div>
         </div>
     {% empty %}

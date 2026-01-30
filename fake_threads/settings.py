@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'cloudinary',
-    'tasks',
-    'auth_system'
+    #'cloudinary_storage',
+    # 'cloudinary',
+    'main',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -135,14 +135,11 @@ CLOUDINARY_STORAGE = {
 }
 
 # Storage backends (Django 4.2+)
-STORAGES = {
-    'default': {
-        'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
-    },
-    'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',  # статичні файли 
-    },
-}
+# STORAGES = {
+#     'staticfiles': {
+#         'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',  # статичні файли 
+#     },
+# }
 
 # Media files
 MEDIA_URL = '/media/' 
